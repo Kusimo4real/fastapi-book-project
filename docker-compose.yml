@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    build: .  # This tells Docker to build the FastAPI app using the Dockerfile
+    container_name: fastapi-app
+    ports:
+      - "8000:8000"  # Expose FastAPI app on port 8000
+
+  nginx:
+    image: nginx:latest  # Use the latest version of the Nginx image
+    container_name: fastapi-nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf  # Mount the Nginx config
+    ports:
+      - "80:80"  # Expose Nginx on port 80 (so it listens for incoming HTTP requests)
+    depends_on:
+      - app  # Ensure FastAPI app starts before Nginx
+
