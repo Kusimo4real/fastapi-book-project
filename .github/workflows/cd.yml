@@ -44,7 +44,7 @@ jobs:
 
             # Deploy the app
             cd /home/ubuntu/
-            git clone <your-github-repo>
+            git clone https://github.com/Kusimo4real/fastapi-book-project.git
             cd fastapi-book-project/
             git fetch origin main
             git reset --hard origin/main
